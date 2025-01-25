@@ -14,7 +14,10 @@ app.get("/", function (request, response) {
 });
 
 mongoose
-  .connect(mongoDBURL)
+  .connect(mongoDBURL, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
   .then(() => {
     console.log("App connected to database.");
     app.listen(PORT, () => {
@@ -40,4 +43,15 @@ app.use({
 */
 
 //middleware communicate with booksRoute.js
+
+const path = require("path");
+
+// Serve static files from the React app
+app.use(express.static(path.join(__dirname, "dist"))); // Adjust path if necessary
+
+// Catch-all handler to serve React's index.html for unmatched routes
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "dist", "index.html"));
+});
+
 app.use('/books', bookRoute);
