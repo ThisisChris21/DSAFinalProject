@@ -90,7 +90,7 @@ router.post("/", async (request, response) => {
   });
   
   // delete a book
-  router.delete('/delete/:id', async (request, response) => {
+  router.delete('/:id', async (request, response) => {
       try {
           const { id } = request.params;
           const result = await Book.findByIdAndDelete(id);
