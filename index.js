@@ -20,8 +20,8 @@ mongoose
   })
   .then(() => {
     console.log("App connected to database.");
-    app.listen(PORT, () => {
-      console.log(`App listening on port: ${PORT}`);
+    app.listen(PORT || 8080 , () => {
+      console.log(`App listening on port: ${PORT || 8080}`);
     });
   })
   .catch((error) => {
