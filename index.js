@@ -50,10 +50,6 @@ import { fileURLToPath } from "url";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-app.use(express.static(path.join(__dirname, "dist"))); // Adjust path if necessary
-
-
-
 // Serve static files from the React app
 app.use(express.static(path.join(__dirname, "dist"))); // Adjust path if necessary
 
